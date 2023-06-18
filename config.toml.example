@@ -1,0 +1,38 @@
+# Specify the absolute directory to write the resulting certificates.
+directory = "./out"
+
+# (Optional) Whether or not to use Let's Encrypt's staging endpoint.
+# Set this to 'true' for testing purposes.
+staging = true
+
+# Specify the DNS API to use.
+#   Porkbun's API uses both a 'secret' and 'public' key for authorization.
+[api.porkbun]
+key.secret = "SECRET"
+key.public = "PUBLIC"
+
+# Specify a certificate
+#   'name' is used for the resulting certificate file.
+[[certificate]]
+name = "cert1"
+
+# Specify a domain to be included in this certificate.
+#   'root' is the root domain.
+#   (Optional) 'hosts' is an array of subdomains.
+#     If 'hosts' is not included, the certificate is created for the 'root' only.
+#     If 'root' should be included along with some subdomains, add "." to the 'hosts' array.
+[[certificate.domain]]
+root = "domain1.example"
+hosts = [ "sub1", "sub2" ]
+
+# Multiple distinct 'root' domains can be included in a single certificate.
+[[certificate.domain]]
+root = "domain2.example"
+hosts = [ ".", "sub1" ]
+
+# Another distinct certificate can be included.
+[[certificate]]
+name = "cert2"
+
+[[certificate.domain]]
+root = "domain3.example"

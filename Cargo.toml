@@ -1,0 +1,47 @@
+[package]
+name = "snacme"
+version = "0.1.0"
+edition = "2021"
+description = "A tool to request Let's Encrypt TLS certificates using the 'dns-01' challenge type."
+
+[profile.release]
+strip = "symbols"
+opt-level = "s"
+lto = true
+
+[dependencies]
+sha2 = "0.10"
+toml = "0.7"
+
+[dependencies.base64ct]
+version = "1.6"
+default-features = false
+features = [ "alloc" ]
+
+[dependencies.p256]
+version = "0.13"
+default-features = false
+features = [ "std", "ecdsa" ]
+
+[dependencies.rand]
+version = "0.8"
+default-features = false
+features = [ "getrandom" ]
+
+[dependencies.rcgen]
+version = "0.10"
+default-features = false
+
+[dependencies.serde]
+version = "1.0"
+default-features = false
+features = [ "derive" ]
+
+[dependencies.serde_json]
+version = "1.0"
+default-features = false
+
+[dependencies.ureq]
+version = "2.6"
+default-features = false
+features = [ "tls", "json" ]
